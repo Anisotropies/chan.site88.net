@@ -1,0 +1,139 @@
+*{
+	text-align: center;
+	color:white;
+}
+body {
+	background: #6b6b6b;
+	background-image:url('images/background1.png');
+	border-width:  5px;
+}
+#coding {
+vertical-align:middle;
+	width:10em;
+	height:5em;
+	display:inline-block;
+	border-color: white;
+	border-style: solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+}
+#games {
+
+	width:10em;
+	height:5em;
+	display:inline-block;
+	border-color: white;
+	border-style: solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+	vertical-align:middle;
+}
+#divider{
+	padding:1em;
+}
+#ee {
+vertical-align:middle;
+	width:10em;
+	height:5em;
+	display:inline-block;
+	border-color: white;
+	border-style: solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+}
+#science {
+vertical-align:middle;
+	width:10em;
+	height:5em;
+	display:inline-block;
+	border-color: white;
+	border-style: solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+}
+#header {
+        position: center;
+        width: 600px;
+        height: 70px;
+	text-align: center;
+
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+    margin: 0 auto;
+	padding: 5px;
+		border-style: none;
+	/*
+	border-style: solid;
+	border-color: white;
+        border-width:  5px;
+	box-shadow: 0.5em 0.5em 1px #A6A6A6;
+	*/
+}
+
+#star{
+	text-align: center;
+	color: white;
+	background: #616161;
+	/*If you don't have width and height, you gotta do the following:
+	position:relative;
+    display: inline-block;
+	*/
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	padding: 0px 0px 0px 0px;
+	/*border-style: solid;
+	border-color: white;
+	border-width: 5px;
+	box-shadow: 0.5em 0.5em 1px #A6A6A6;
+	*/
+}
+
+#star.hover{
+	background:  #302e2f;
+}
+
+#p{
+	text-align: center;
+	margin:0px;
+}
+
+#meltStar{
+	width: 400px;
+	height: 100px;
+	text-align:center;
+	background: #000000;
+	color: white;
+	margin: auto;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: italic;
+	font-family: sans-serif;
+	/*
+	border-style: solid;
+	border-color: white;
+	border-width: 5px;
+	box-shadow: 0.5em 0.5em 1px #A6A6A6;
+	*/
+}
+
+#meltStar:hover{
+	/*background-image:url('images/meltStarBg.png'); 
+	*/
+	background: #302e2f;
+}
+
+a:hover{
+	color: #000000;
+}				

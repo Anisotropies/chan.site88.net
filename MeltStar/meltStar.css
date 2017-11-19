@@ -1,0 +1,37 @@
+body{
+	background: #000000;
+	 color: white;
+        text-align: center;
+}
+
+#gameTitle{
+	margin: auto auto 0em auto;
+	font-family: Verdana, sans-serif;
+	font-size: 3em;
+	text-align: center;
+	color: #ffffff;
+}
+
+#canvasBg{
+	display: block;
+	background: #4A4A4A;
+	margin: 0px auto 0px;
+}
+
+#canvasDrone, #canvasShip{
+	display: block;
+	margin: -400px auto 0px;
+}
+
+
+
+p{
+	text-align: center;
+	color:white;
+}
+a{
+	color:white;
+}
+a:hover{
+	color:blue;
+}
