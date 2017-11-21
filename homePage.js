@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var xhttp = new XMLHttpRequest();
     xhttp.open("GET","http://climatedataapi.worldbank.org/climateweb/rest/v1/country/annualavg/tas/2000/2010/USA" , true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
