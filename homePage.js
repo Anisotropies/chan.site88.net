@@ -8,5 +8,6 @@ function UserAction() {
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
     alert("xhttp.status: " + xhttp.status);
-    alert("response"+response);
+    var a = "b";
+    alert("response"+response;
 }
