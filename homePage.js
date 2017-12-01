@@ -1,10 +1,16 @@
 $(document).ready(function() {
 
 var xhttp = new XMLHttpRequest();
-    xhttp.open("GET","http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/USA",false);
-    xhttp.setRequestHeader("Content-type", "application/json");
+var response;
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      reponse = this.responseText;
+    }
+  };
+    xhttp.open("GET","http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/USA",true);
     xhttp.send();
-    var jsonData = JSON.parse(xhttp.responseText);
+	console.log("xhttp.responseText " + response);
+    var jsonData = JSON.parse(response);
     //alert("xhttp.status: " + xhttp.status);
     var years = [];
     var dataSet = [];
