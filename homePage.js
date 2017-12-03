@@ -4,7 +4,7 @@ $(document).ready(function() {
 var xhttp = new XMLHttpRequest();
 var response;
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 100) {
+    if (this.readyState == 4 && this.status == 200) {
       reponse = this.responseText;
     }
   };
