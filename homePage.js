@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+<<<<<<< HEAD
 var xhttp = new XMLHttpRequest();
 var response;
   xhttp.onreadystatechange = function() {
@@ -11,6 +12,13 @@ var response;
     xhttp.send();
 	console.log("xhttp.responseText " + response);
     var jsonData = JSON.parse(response);
+=======
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+  console.log("this: " + this);
+	      var jsonData = JSON.parse( this.responseText);
+>>>>>>> 668f5f2420a6efd9646340d6b0c807293245d57c
     //alert("xhttp.status: " + xhttp.status);
     var years = [];
     var dataSet = [];
@@ -41,6 +49,13 @@ var chart = new Chart(ctx, {
     // Configuration options go here
     options: {}
 });
+
+    }
+  };
+  xhttp.open("GET", "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/USA", true);
+  xhttp.send();
+
+
 
 
 
