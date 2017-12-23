@@ -1,26 +1,41 @@
 import turtle
 
-def draw_square():
-    window = turtle.Screen()
-    window.bgcolor("#000000")
+window = turtle.Screen()
+window.bgcolor("#000000")
 
-    myTurtle = turtle.Turtle()
-    myTurtle.shape("turtle")
-    myTurtle.color("#00cc00")
+
+def draw_square(turtleInst, offset):
     sides = 4
+    turtleInst.right(offset)
+
     for s in range(sides):
-        if (s%2 == 0):
-            myTurtle.speed(1)
-        else:
-            myTurtle.speed(5)
-        myTurtle.forward(100)
-        myTurtle.right(90)
+        turtleInst.right(90)
+        turtleInst.speed(10)
+        turtleInst.forward(100)
 
-    angie = turtle.Turtle()
-    angie.shape("classic")
-    angie.color("#00ccff")
-    angie.circle(100)
-    
-    window.exitonclick()
 
-draw_square()
+def draw_square_circle(turtleInst, divisions):
+    incrementAngle = 360/divisions
+    r = 0
+    g = 1.0
+    b = 0
+    for i in range(divisions):
+        draw_square(turtleInst, incrementAngle)  
+        r += divisions/255.0
+        b += divisions/255.0
+        
+        if (r>1):
+            r = 1
+            b = 1
+        
+        turtleInst.color(r,g,b)
+
+
+myTurtle = turtle.Turtle()
+myTurtle.shape("turtle")
+
+
+draw_square_circle(myTurtle,30)
+
+window.exitonclick()
+
