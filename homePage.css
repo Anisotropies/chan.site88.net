@@ -128,9 +128,11 @@ body {
 	margin:0px;
 }
 			
-#myChart{
-    width:5em;
-	height:2em;
+#chartContainer{
+    width:50em;
+	height:25em;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 #chartBckgnd{

@@ -16,6 +16,11 @@ function()
 			data.push(counter[1]);
 		}
 
+		var initialVal = jsonData.dataset_data.data[0][1];
+		var finalVal = jsonData.dataset_data.data[1][1];
+		
+		var returnVal = Number((finalVal-initialVal)/finalVal*100).toFixed(2);
+		document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
 		
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var chart = new Chart(ctx, {
