@@ -1,6 +1,10 @@
 $(document).ready(
 function()
 {	
+	$(".FormText").on('change keyup paste', function() {
+		var start_date = document.getElementById("StartDate").value;
+		console.log(start_date);
+	});
 	var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {

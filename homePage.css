@@ -94,7 +94,9 @@ body {
 	height:5em;
 
 }
-
+.FormText {
+	color:grey;
+}
 .box {
 	width:10em;
 	height:10em;
