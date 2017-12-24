@@ -2,13 +2,14 @@ $(document).ready(
 function()
 {	
 	$(".FormText").on('change keyup paste', function() {
-		var start_date = document.getElementById("StartDate").value;
-		console.log(start_date);
-	});
-	var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
+		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
+		
+		var companyCode = document.getElementById("StartDate").value;
+		console.log(companyCode);
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-	  console.log("this: " + this);
+		console.log("this: " + this);
 			  var jsonData = JSON.parse( this.responseText);
 			  
 		//alert("xhttp.status: " + xhttp.status);
@@ -70,8 +71,11 @@ function()
 		
 		}
 	  };
-	  xhttp.open("GET", "https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily", true);
+	  var requestURL = wikiURL + companyCode + "/data.json?column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
+	  xhttp.open("GET", requestURL, true);
 	  xhttp.send();
+	});
+	
 });
 
 function openTab(evt, cityName) {
