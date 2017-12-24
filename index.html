@@ -7,43 +7,33 @@
 		<!--<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script type="text/javascript" language="javascript" src="homePage.js"></script>
-		
 	</head>
-	<body>
-		<div id="header"> <h1>Andrew Chan</h1> </div>
-		
-		<table id="linkTable">
-			<tr>
-				<td>
-					<div id="meltStarContainer">
-						<div id="meltStar">
-							<a href="http://chana.site88.net/MeltStar/meltstar.html">
-								<img id ="meltStarImg" src="images/title.png"/>
-							</a>
-						</div>
-					</div>
-				</td>
-				<td>
-
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="boxLink"><a href="https://github.com/Anisotropies"><div class="box">GitHub</div></a></div>
-				</td>
-				<td>
-					<div class="boxLink"><a href="Subpages/Andrew C. Chan Resume 20171107.docx.pdf"><div class="box">RESUME</div></a></div>
-				</td>
-			
-				
-			</tr>
-		</table>
-
-<div id="chartBckgnd">
-
-<canvas id="myChart"></canvas>
-
+<body>
+<div class="Title">
+	<h1>Historical % Return Stock Calculator</h1>
 </div>
 
-	</body>
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Technology')">Technology</button>
+  <button class="tablinks" onclick="openTab(event, 'Food')">Food</button>
+  <button class="tablinks" onclick="openTab(event, 'NaturalResources')">Natural Resources</button>
+</div>
+
+<div id="Technology" class="tabcontent">
+  <h3>Technology</h3>
+  <p>Tech Stock Info</p>
+</div>
+
+<div id="Food" class="tabcontent">
+  <h3>Food</h3>
+  <p>Food Industry Info</p> 
+</div>
+
+<div id="NaturalResources" class="tabcontent">
+  <h3>Natural Resources</h3>
+  <p>Natural Resources Info</p>
+</div>
+
+     
+</body>
 </html>
