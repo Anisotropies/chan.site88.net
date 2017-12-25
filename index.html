@@ -14,7 +14,7 @@
 </div>
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Technology')">Technology</button>
+  <button class="tablinks" id = "techTab" onclick="openTab(event, 'Technology')">Technology</button>
   <button class="tablinks" onclick="openTab(event, 'Food')">Food</button>
   <button class="tablinks" onclick="openTab(event, 'NaturalResources')">Natural Resources</button>
 </div>
@@ -26,7 +26,9 @@
 	Ticker Symbol: <input class = "FormText" id = "ticker" type="text" name="ticker"><br>
 	Start Date: <input class = "FormText" id = "StartDate" type="text" name="StartDate"><br>
 	End Date: <input class = "FormText" id = "EndDate" type="text" name="EndDate"><br>
+	
 	</form>
+	<div id = "submitButton"> Submit </div>
   <p id = "returnVal"></p>
   <div id="chartContainer">
 	<canvas id="myChart"></canvas>

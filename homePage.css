@@ -140,3 +140,11 @@ body {
 #chartBckgnd{
     background-color: white;
 }
+
+#submitButton{
+	display: inline-block;
+	background: grey;
+}
+#StartEndForm{
+    padding-bottom: 1em;
+}

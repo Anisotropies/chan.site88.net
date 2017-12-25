@@ -1,12 +1,31 @@
 $(document).ready(
 function()
 {	
-	$(".FormText").on('change keyup paste', function() {
+
+	//click on the first tab by default
+	document.getElementById("techTab").click();
+	
+	//var for chart
+	var chart;
+	
+	
+	//use GET request to get stock info
+	
+	$("#submitButton").hover(function(){
+        $(this).css("background-color", "lightgrey");
+        }, function(){
+        $(this).css("background-color", "grey");
+    });
+	
+	$("#submitButton").on( "click", function() {
 		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
 		var apiKey = "dqgc4_9drB6jbTos2Sqt";
 		var companyCode = document.getElementById("ticker").value;
 		console.log(companyCode);
 		var xhttp = new XMLHttpRequest();
+		var requestURL = wikiURL + companyCode + "/data.json?api_key="+apiKey+"&column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
+	    xhttp.open("GET", requestURL, true);
+	    xhttp.send();
 		xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 		console.log("this: " + this);
@@ -27,8 +46,13 @@ function()
 		var returnVal = Number((finalVal-initialVal)/finalVal*100).toFixed(2);
 		document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
 		
+		//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
+		if (chart) {
+			console.log("Destroying Old Chart");
+			chart.destroy();
+		}
 		var ctx = document.getElementById('myChart').getContext('2d');
-		var chart = new Chart(ctx, {
+			chart = new Chart(ctx, {
 			// The type of chart we want to create
 			type: 'line',
 
@@ -71,13 +95,12 @@ function()
 		
 		}
 	  };
-	  var requestURL = wikiURL + companyCode + "/data.json?api_key="+apiKey+"&column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
-	  xhttp.open("GET", requestURL, true);
-	  xhttp.send();
+
 	});
 	
 });
 
+//open tab logic
 function openTab(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
