@@ -30,10 +30,6 @@ function()
 		if (this.readyState == 4 && this.status == 200) 
 		{
 			var jsonData = JSON.parse( this.responseText);
-			//not needed really
-			var jsonDataMap = new Map(jsonData.dataset_data.data);
-			console.log(jsonData);
-			console.log(jsonDataMap);
 			var tIncrement = [];
 			var data = [];
 			
