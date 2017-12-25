@@ -45,7 +45,7 @@ function()
 				var initialVal = jsonData.dataset_data.data[0][1];
 				var finalVal = jsonData.dataset_data.data[jsonData.dataset_data.data.length-1][1];
 				
-				var returnVal = Number((finalVal-initialVal)/finalVal*100).toFixed(2);
+				var returnVal = Number((finalVal-initialVal)/initialVal*100).toFixed(2);
 				document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
 				
 				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
