@@ -21,9 +21,13 @@ function()
 		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
 		var apiKey = "dqgc4_9drB6jbTos2Sqt";
 		var companyCode = document.getElementById("ticker").value;
-		console.log(companyCode);
+		
+		var startDate = document.getElementById("StartDate").value;
+		
+		var endDate = document.getElementById("EndDate").value;
+				
 		var xhttp = new XMLHttpRequest();
-		var requestURL = wikiURL + companyCode + "/data.json?api_key="+apiKey+"&column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
+		var requestURL = wikiURL + companyCode + "/data.json?api_key=" + apiKey + "&column_index=4&exclude_column_names=true&start_date=" + startDate + "&end_date=" + endDate + "&order=asc&collapse=daily";
 	    xhttp.open("GET", requestURL, true);
 	    xhttp.send();
 		xhttp.onreadystatechange = function() {
