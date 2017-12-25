@@ -3,8 +3,8 @@ function()
 {	
 	$(".FormText").on('change keyup paste', function() {
 		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
-		
-		var companyCode = document.getElementById("StartDate").value;
+		var apiKey = "dqgc4_9drB6jbTos2Sqt";
+		var companyCode = document.getElementById("ticker").value;
 		console.log(companyCode);
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -71,7 +71,7 @@ function()
 		
 		}
 	  };
-	  var requestURL = wikiURL + companyCode + "/data.json?column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
+	  var requestURL = wikiURL + companyCode + "/data.json?api_key="+apiKey+"&column_index=4&exclude_column_names=true&start_date=2016-12-23&end_date=2017-12-22&order=asc&collapse=daily";
 	  xhttp.open("GET", requestURL, true);
 	  xhttp.send();
 	});
