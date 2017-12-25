@@ -1,10 +1,6 @@
 $(document).ready(
 function()
-{	
-
-	//click on the first tab by default
-	document.getElementById("techTab").click();
-	
+{		
 	//var for chart
 	var chart;
 	
@@ -12,7 +8,7 @@ function()
 	//use GET request to get stock info
 	
 	$("#submitButton").hover(function(){
-        $(this).css("background-color", "lightgrey");
+        $(this).css({"background-color": "lightgrey", "cursor": "pointer"});
         }, function(){
         $(this).css("background-color", "grey");
     });
