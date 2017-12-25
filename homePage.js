@@ -27,72 +27,79 @@ function()
 	    xhttp.open("GET", requestURL, true);
 	    xhttp.send();
 		xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-		console.log("this: " + this);
-			  var jsonData = JSON.parse( this.responseText);
-			  
-		//alert("xhttp.status: " + xhttp.status);
-		var tIncrement = [];
-		var data = [];
-		for (var i = 0; i < jsonData.dataset_data.data.length; i++) {
-			var counter = jsonData.dataset_data.data[i];
-			tIncrement.push(counter[0]);
-			data.push(counter[1]);
-		}
-
-		var initialVal = jsonData.dataset_data.data[0][1];
-		var finalVal = jsonData.dataset_data.data[1][1];
-		
-		var returnVal = Number((finalVal-initialVal)/finalVal*100).toFixed(2);
-		document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
-		
-		//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
-		if (chart) {
-			console.log("Destroying Old Chart");
-			chart.destroy();
-		}
-		var ctx = document.getElementById('myChart').getContext('2d');
-			chart = new Chart(ctx, {
-			// The type of chart we want to create
-			type: 'line',
-
-			// The data for our dataset
-			data: {
-				labels: tIncrement,
-				datasets: [{
-					label: "Stock vs. Year",
-					//backgroundColor: 'rgb(99, 99, 132)',
-					borderColor: 'rgb(255, 255, 255)',
-					data: data,
-				}]
-			},
-
-			// Configuration options go here
-			options: {
-				legend: {
-					display: false,
-				},
-				scales:{
-					xAxes: [{
-						gridLines:{
-							color: 'rgb(192, 192, 192)'
-						},
-						ticks:{
-							fontColor: 'rgb(192, 192, 192)'
-						}
-					}],
-					yAxes: [{
-						gridLines:{
-							color: 'rgb(192, 192, 192)'
-						},
-						ticks:{
-							fontColor: 'rgb(192, 192, 192)'
-						}
-					}]
+		if (this.readyState == 4 && this.status == 200) 
+		{
+			var jsonData = JSON.parse( this.responseText);
+			//not needed really
+			var jsonDataMap = new Map(jsonData.dataset_data.data);
+			console.log(jsonData);
+			console.log(jsonDataMap);
+			var tIncrement = [];
+			var data = [];
+			
+			//Makes sure there is data
+			if(jsonData.dataset_data.data.length>0)
+			{
+				for (var i = 0; i < jsonData.dataset_data.data.length; i++) {
+					var counter = jsonData.dataset_data.data[i];
+					tIncrement.push(counter[0]);
+					data.push(counter[1]);
 				}
+
+				var initialVal = jsonData.dataset_data.data[0][1];
+				var finalVal = jsonData.dataset_data.data[jsonData.dataset_data.data.length-1][1];
+				
+				var returnVal = Number((finalVal-initialVal)/finalVal*100).toFixed(2);
+				document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
+				
+				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
+				if (chart) {
+					console.log("Destroying Old Chart");
+					chart.destroy();
+				}
+				var ctx = document.getElementById('myChart').getContext('2d');
+					chart = new Chart(ctx, {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						labels: tIncrement,
+						datasets: [{
+							label: "Stock vs. Year",
+							//backgroundColor: 'rgb(99, 99, 132)',
+							borderColor: 'rgb(255, 255, 255)',
+							data: data,
+						}]
+					},
+
+					// Configuration options go here
+					options: {
+						legend: {
+							display: false,
+						},
+						scales:{
+							xAxes: [{
+								gridLines:{
+									color: 'rgb(192, 192, 192)'
+								},
+								ticks:{
+									fontColor: 'rgb(192, 192, 192)'
+								}
+							}],
+							yAxes: [{
+								gridLines:{
+									color: 'rgb(192, 192, 192)'
+								},
+								ticks:{
+									fontColor: 'rgb(192, 192, 192)'
+								}
+							}]
+						}
+					}
+				});
+			
 			}
-		});
-		
 		}
 	  };
 
