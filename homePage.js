@@ -71,7 +71,7 @@ function()
 				var returnVal = Number((finalVal-initialVal)/initialVal*100).toFixed(2);
 				document.getElementById("companyName").innerHTML = "<h3>" + companyName + "</h3>";
 				document.getElementById("returnVal").innerHTML = "<h3> Percent Return: " + returnVal + "% </h3>";
-				
+				document.getElementById("citationQuandl").innerHTML = "<h6>Data from <a href=\"https://www.quandl.com/databases/WIKIP/usage/quickstart/api\"> Quandl</a> wiki prices</h6>";
 				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
 				if (chart) {
 					chart.destroy();
