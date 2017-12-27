@@ -4,6 +4,7 @@ function()
 	//var for chart
 	var chart;
 	
+
 	
 	//use GET request to get stock info
 	
@@ -17,21 +18,43 @@ function()
 		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
 		var apiKey = "dqgc4_9drB6jbTos2Sqt";
 		var companyCode = document.getElementById("ticker").value;
+		var companyName = "";
 		
+		//metadata request to set companyName
+		
+		var xhttpMeta = new XMLHttpRequest();
+		var requestURLMeta = wikiURL + companyCode + "/metadata.json?api_key=" + apiKey;
+		xhttpMeta.open("GET", requestURLMeta, true);
+	    xhttpMeta.send();
+		xhttpMeta.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) 
+		{
+			var jsonDataMeta = JSON.parse( this.responseText);
+			
+			//Makes sure there is data
+			if(jsonDataMeta.dataset.name.length)
+			{
+				companyName = jsonDataMeta.dataset.name;
+				console.log("Company Name 1st request: "+ companyName);
+			}
+		}
+		}
+
+		//dataRequest
 		var startDate = document.getElementById("StartDate").value;
 		
 		var endDate = document.getElementById("EndDate").value;
 				
 		var xhttp = new XMLHttpRequest();
 		var requestURL = wikiURL + companyCode + "/data.json?api_key=" + apiKey + "&column_index=4&exclude_column_names=true&start_date=" + startDate + "&end_date=" + endDate + "&order=asc&collapse=daily";
-	    xhttp.open("GET", requestURL, true);
+		xhttp.open("GET", requestURL, true);
 	    xhttp.send();
 		xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) 
 		{
 			var jsonData = JSON.parse( this.responseText);
 			var tIncrement = [];
-			var data = [];
+			var stockData = [];
 			
 			//Makes sure there is data
 			if(jsonData.dataset_data.data.length>0)
@@ -39,20 +62,23 @@ function()
 				for (var i = 0; i < jsonData.dataset_data.data.length; i++) {
 					var counter = jsonData.dataset_data.data[i];
 					tIncrement.push(counter[0]);
-					data.push(counter[1]);
+					stockData.push(counter[1]);
 				}
 
 				var initialVal = jsonData.dataset_data.data[0][1];
 				var finalVal = jsonData.dataset_data.data[jsonData.dataset_data.data.length-1][1];
 				
 				var returnVal = Number((finalVal-initialVal)/initialVal*100).toFixed(2);
-				document.getElementById("returnVal").innerHTML = "Percent Return: " + returnVal + "%";
+				document.getElementById("companyName").innerHTML = "<h3>" + companyName + "</h3>";
+				document.getElementById("returnVal").innerHTML = "<h3> Percent Return: " + returnVal + "% </h3>";
 				
 				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
 				if (chart) {
 					console.log("Destroying Old Chart");
 					chart.destroy();
 				}
+
+
 				var ctx = document.getElementById('myChart').getContext('2d');
 					chart = new Chart(ctx, {
 					// The type of chart we want to create
@@ -65,7 +91,7 @@ function()
 							label: "Stock vs. Year",
 							//backgroundColor: 'rgb(99, 99, 132)',
 							borderColor: 'rgb(255, 255, 255)',
-							data: data,
+							data: stockData,
 						}]
 					},
 
@@ -94,10 +120,26 @@ function()
 						}
 					}
 				});
+
+				//onclick
+				var canvas = document.getElementById("myChart");
+				canvas.onclick = function(evt){
+				var activePoints = chart.getElementsAtEvent(evt);
+				// => activePoints is an array of points on the canvas that are at the same position as the click event.
+				if (activePoints[0]) {
+					var label = chart.data.labels[activePoints[0]._index];
+					console.log("label: " + label);
+					var value = chart.data.datasets[activePoints[0]._datasetIndex].data[activePoints[0]._index];
+					console.log("value: " + value);
+				}
+				};
 			
 			}
 		}
 	  };
+
+
+	
 
 	});
 	

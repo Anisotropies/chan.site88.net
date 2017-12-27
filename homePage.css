@@ -74,51 +74,10 @@ body {
 }
 
 
-#meltStar{
-	width:10em;
-	height:5em;
-	display: inline-block;
-	vertical-align:middle;
-	margin: auto;
-	padding: 20% 0;
-}
-
-#meltStar:hover{
-	/*background-image:url('images/meltStarBg.png'); 
-	*/
-	background: #302e2f;
-}
-
-#meltStarImg{
-	width:10em;
-	height:5em;
-
-}
 .FormText {
 	color:grey;
+	text-align:left;
 }
-.box {
-	width:10em;
-	height:10em;
-	background-color: DimGray;
-	font-size: 1em;
-	font-weight: bold;
-	font-style: normal;
-	font-family: sans-serif;
-	display: table-cell;
-	vertical-align:middle;
-
-}
-
-.box:hover {
-	background-color: LightGrey;
-}
-
-.boxLink a{
-		text-decoration: none;
-	
-}
-
 #linkTable {
     margin-left:auto; 
     margin-right:auto; 
@@ -148,4 +107,8 @@ body {
 }
 #StartEndForm{
     padding-bottom: 1em;
+}
+::placeholder {
+    color: Gainsboro;
+    opacity: 1; /* Firefox */
 }
