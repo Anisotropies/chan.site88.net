@@ -34,8 +34,8 @@ function()
 			//Makes sure there is data
 			if(jsonDataMeta.dataset.name.length)
 			{
-				companyName = jsonDataMeta.dataset.name;
-				console.log("Company Name 1st request: "+ companyName);
+				companyPreprocessedName = jsonDataMeta.dataset.name;
+				companyName = companyPreprocessedName.replace('Prices, Dividends, Splits and Trading Volume','Closing Prices');
 			}
 		}
 		}
@@ -74,7 +74,6 @@ function()
 				
 				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
 				if (chart) {
-					console.log("Destroying Old Chart");
 					chart.destroy();
 				}
 
@@ -88,7 +87,7 @@ function()
 					data: {
 						labels: tIncrement,
 						datasets: [{
-							label: "Stock vs. Year",
+							label: "Closing Price",
 							//backgroundColor: 'rgb(99, 99, 132)',
 							borderColor: 'rgb(255, 255, 255)',
 							data: stockData,
