@@ -3,55 +3,8 @@ function()
 {		
 	//var for chart
 	var chart;
-	
-	var coNames = [];
+
 	//////////////////////////////////////////////////////////////////////////////////
-	var queryTickerName = function(ticker)
-	{
-		var wikiURL = "https://www.quandl.com/api/v3/datasets/WIKI/";
-		var apiKey = "dqgc4_9drB6jbTos2Sqt";
-		var companyName = "";
-		console.log("Here!");
-		var xhttpMeta = new XMLHttpRequest();
-		var requestURLMeta = wikiURL + ticker + "/metadata.json?api_key=" + apiKey;
-		xhttpMeta.open("GET", requestURLMeta, true);
-	    xhttpMeta.send();
-		xhttpMeta.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				var jsonDataMeta = JSON.parse( this.responseText);
-				
-				//Makes sure there is data
-				if(jsonDataMeta.dataset.name.length)
-				{
-					companyPreprocessedName = jsonDataMeta.dataset.name;
-					companyName = companyPreprocessedName.replace('Prices, Dividends, Splits and Trading Volume','');
-					coNames.push(companyName);
-					console.log(companyName);
-				}
-			}
-		}
-	};
-
-	
-	function doSetTimeout(i) {
-		var companyCode = sp500Ticker[i].Ticker;
-	  setTimeout(function(){queryTickerName(companyCode)}, 1000);
-	}
-
-
-	//Try multiple ticker requests:
-	for(let i = 0; i < sp500Ticker.length; i++)
-	{
-		//metadata request to set companyName
-		doSetTimeout(i);
-		
-			
-	}
-	//////////////////////////////////////////////////////////////////////////////////
-
-	console.log(coNames.length);
-	//use GET request to get stock info
 
 	
 	$("#submitButton").hover(function(){
