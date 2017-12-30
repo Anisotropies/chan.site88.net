@@ -65,12 +65,14 @@ body {
 	*/
 }
 
+#companyName
+{
+	margin-bottom:0px;
+}
 
-#meltStarContainer{
-	width:10em;
-	height:10em;
-	background: #000000;
-	margin: auto;
+#returnVal
+{
+	margin-top:0px;
 }
 
 

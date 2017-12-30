@@ -68,7 +68,7 @@ function()
 				var finalVal = jsonData.dataset_data.data[jsonData.dataset_data.data.length-1][1];
 				
 				var returnVal = Number((finalVal-initialVal)/initialVal*100).toFixed(2);
-				document.getElementById("companyName").innerHTML = "<h3>" + companyName + "</h3>";
+				document.getElementById("companyName").innerHTML = "<h2>" + companyName + "</h2>";
 				document.getElementById("returnVal").innerHTML = "<h3> Percent Return: " + returnVal + "% </h3>";
 				document.getElementById("citationQuandl").innerHTML = "<h6>Data from <a href=\"https://www.quandl.com/databases/WIKIP/usage/quickstart/api\"> Quandl</a> wiki prices</h6>";
 				//destroy old chart data first https://stackoverflow.com/questions/42788924/chartjs-bar-chart-showing-old-data-when-hovering
@@ -94,11 +94,20 @@ function()
 					regressionCurveArr.push(m*x+b);
 				}
 				
-				
+				var stockCurveDataset = {
+					data: stockData,
+					label: "Closing Price ($)",
+					pointBackgroundColor:  'rgb(255, 255, 255)',
+					pointRadius: 2,
+					borderColor: 'rgb(255, 255, 255)',	
+					backgroundColor: 'rgba(220,220,220,0.3)'					
+				}
 				
 				var regressionCurveDataset = {
-					label: "Regression Curve",
 					data: regressionCurveArr,
+					label: "Regression Curve ($)",
+					pointBackgroundColor:  'rgb(72, 209, 204)',
+					pointRadius: 1,					
 					borderColor: 'rgb(72, 209, 204)'
 				};
 				var ctx = document.getElementById('myChart').getContext('2d');
@@ -109,18 +118,18 @@ function()
 					// The data for our dataset
 					data: {
 						labels: tIncrement,
-						datasets: [{
-							label: "Closing Price",
-							//backgroundColor: 'rgb(99, 99, 132)',
-							borderColor: 'rgb(255, 255, 255)',
-							data: stockData,
-						},regressionCurveDataset]
+						datasets: [stockCurveDataset,regressionCurveDataset]
 					},
 
 					// Configuration options go here
 					options: {
+						
 						legend: {
-							display: false,
+							display: true,
+							position: 'left',
+							labels:{
+								fontColor: '#ffffff'								
+							}
 						},
 						scales:{
 							xAxes: [{
@@ -139,7 +148,12 @@ function()
 									fontColor: 'rgb(192, 192, 192)'
 								}
 							}]
+						},
+						 tooltips: {
+							mode: 'nearest',
+							intersect: false
 						}
+						
 					}
 				});
 
