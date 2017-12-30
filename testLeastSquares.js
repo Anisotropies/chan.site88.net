@@ -83,12 +83,3 @@ var linearRegressionIntercept = function(predictorArr,criterionArr)
 	return M_y - b*M_x;
 }
 
-$(document).ready(
-function()
-{		
-	var x = [1,2,3,4,5];
-	var y = [1,2,1.3,3.75,2.25];
-	console.log("b: "+linearRegressionSlope(x,y));
-	console.log("A: "+linearRegressionIntercept(x,y));
-
-});

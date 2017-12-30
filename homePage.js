@@ -76,7 +76,31 @@ function()
 					chart.destroy();
 				}
 
-
+				//create x data from stockData from 0 to stockData.length
+				var xData = [];
+				for(var i = 0; i<stockData.length;i++)
+				{
+					xData.push(i);
+				}				
+				
+				//calculate regression slope and interecept
+				var m = linearRegressionSlope(xData, stockData);
+				var b = linearRegressionIntercept(xData, stockData);
+								
+				//create regression curve from regression equations
+				var regressionCurveArr = [];
+				for(var x = 0; x<stockData.length;x++)
+				{
+					regressionCurveArr.push(m*x+b);
+				}
+				
+				
+				
+				var regressionCurveDataset = {
+					label: "Regression Curve",
+					data: regressionCurveArr,
+					borderColor: 'rgb(72, 209, 204)'
+				};
 				var ctx = document.getElementById('myChart').getContext('2d');
 					chart = new Chart(ctx, {
 					// The type of chart we want to create
@@ -90,7 +114,7 @@ function()
 							//backgroundColor: 'rgb(99, 99, 132)',
 							borderColor: 'rgb(255, 255, 255)',
 							data: stockData,
-						}]
+						},regressionCurveDataset]
 					},
 
 					// Configuration options go here
