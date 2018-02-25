@@ -9,28 +9,39 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script type="text/javascript" language="javascript" src="homePage.js"></script>
         <script type="text/javascript" language="javascript" src="testLeastSquares.js"></script>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+		 
+		<!-- Include Date Range Picker -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.27/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.27/daterangepicker.css" />
+
+		
 	</head>
 <body>
 <div class="Title">
 	<h1>Historical % Return Stock Calculator</h1>
 </div>
-
-
-
 	<form id = "StartEndForm">
-	Ticker Symbol: <input class = "FormText" id = "ticker" type="text" name="ticker" placeholder="FB"><br>
-	Start Date (in YYYY-MM-DD): <input class = "FormText" id = "StartDate" type="text" name="StartDate" placeholder="2016-1-1"><br>
-	End Date (in YYYY-MM-DD): <input class = "FormText" id = "EndDate" type="text" name="EndDate" placeholder="2017-1-1"><br>
+	Ticker Symbol: <input class = "FormText" id = "ticker" type="text" name="ticker" value="FB"><br>
+	Date Range:	<input class = "FormText" id = "dateRange" type="text" name="daterange" value="01/01/2017 - 01/01/2018" />
 	
 	</form>
-	<div id = "submitButton"> Submit </div>
-  <div id = "companyName"></div>
- <div id = "returnVal"></div>
-  <div id="chartContainer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6"></div>
+			<div id = "submitButton" class="col-md-1">Submit</div>
+		</div>
+	</div>
+	<div id = "companyName"></div>
+	<div id = "returnVal"></div>
+	<div id="chartContainer">
 	<canvas id="myChart"></canvas>
-  </div>
+ </div>
 
 <div id = "citationQuandl"></div>
-     
+
+
 </body>
 </html>

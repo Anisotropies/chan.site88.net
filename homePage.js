@@ -6,6 +6,7 @@ function()
 
 	//////////////////////////////////////////////////////////////////////////////////
 
+	$('input[name="daterange"]').daterangepicker();
 	
 	$("#submitButton").hover(function(){
         $(this).css({"background-color": "lightgrey", "cursor": "pointer"});
@@ -40,9 +41,14 @@ function()
 		}
 
 		//dataRequest
-		var startDate = document.getElementById("StartDate").value;
+		var dateRange = document.getElementById("dateRange").value;
 		
-		var endDate = document.getElementById("EndDate").value;
+		
+		console.log("dateRange Substring: " + dateRange.substring(0,2));
+		
+		var startDate = dateRange.substring(6,10) + "-" + dateRange.substring(0,2) + "-" + dateRange.substring(3,5);
+		
+		var endDate = dateRange.substring(19,23) + "-" + dateRange.substring(13,15) + "-" + dateRange.substring(16,18);
 				
 		var xhttp = new XMLHttpRequest();
 		var requestURL = wikiURL + companyCode + "/data.json?api_key=" + apiKey + "&column_index=4&exclude_column_names=true&start_date=" + startDate + "&end_date=" + endDate + "&order=asc&collapse=daily";
