@@ -17,30 +17,31 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.27/daterangepicker.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.27/daterangepicker.css" />
 
+		<!-- Include Font Awesome -->
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 	</head>
 <body>
-<div class="Title">
+<div class="Title content">
 	<h1>Historical % Return Stock Calculator</h1>
 </div>
 	<form id = "StartEndForm">
-	Ticker Symbol: <input class = "FormText" id = "ticker" type="text" name="ticker" value="FB"><br>
-	Date Range:	<input class = "FormText" id = "dateRange" type="text" name="daterange" value="01/01/2017 - 01/01/2018" />
-	
+	<div id = "tickerDiv" class = "content">Ticker Symbol <i class="fas fa-chart-line"></i> <input class = "FormText" id = "ticker" type="text" name="ticker" value="FB"><br></div>
+	<div class = "content">Date Range <i class="fa fa-calendar-alt"></i> <input class = "FormText" id = "dateRange" type="text" name="daterange"  value="01/01/2017 - 01/01/2018" /></div>
 	</form>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6"></div>
-			<div id = "submitButton" class="col-md-1">Submit</div>
+			<div id = "submitButton" class="col-md-1 content">Submit</div>
 		</div>
 	</div>
-	<div id = "companyName"></div>
-	<div id = "returnVal"></div>
-	<div id="chartContainer">
+	<div id = "companyName" class = "content"></div>
+	<div id = "returnVal" class = "content"></div>
+	<div id="chartContainer"class = "content">
 	<canvas id="myChart"></canvas>
  </div>
 
-<div id = "citationQuandl"></div>
+<div id = "citationQuandl" class = "content"></div>
 
 
 </body>

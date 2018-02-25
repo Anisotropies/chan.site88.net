@@ -1,4 +1,4 @@
-*{
+.content{
 	text-align: center;
 	color:white;
 	font-family: Arial;
@@ -33,7 +33,7 @@ body {
 
 /* Create an active/current tablink class */
 .tab button.active {
-	background-color: #ccc;
+	background-color: #000;
 }
 
 /* Style the tab content */
@@ -100,6 +100,10 @@ body {
 
 #chartBckgnd{
     background-color: white;
+}
+
+#tickerDiv{
+	margin: 5px;
 }
 
 #submitButton{
